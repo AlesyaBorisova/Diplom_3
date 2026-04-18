@@ -1,6 +1,8 @@
 package tests;
 
 import drivers.FactoryDriver;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import model.User;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,6 +21,8 @@ public class RegisterTests {
     public FactoryDriver factory = new FactoryDriver();
 
     @Test
+    @DisplayName("Успешная регистрация пользователя")
+    @Description("Проверяет, что пользователь может зарегистрироваться с валидными данными")
     public void successRegisterTest() {
         MainPage mainPage = new MainPage(factory.getDriver());
         mainPage.openPage();
@@ -43,6 +47,8 @@ public class RegisterTests {
     }
 
     @Test
+    @DisplayName("Ошибка при некорректном пароле")
+    @Description("Проверяет, что система показывает ошибку при пароле менее 6 символов")
     public void errorIncorrectPassword() {
         MainPage mainPage = new MainPage(factory.getDriver());
         mainPage.openPage();

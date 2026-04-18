@@ -22,6 +22,7 @@ public class Base {
 
     @Step("Открытие главной страницы")
     public void openPage() {
+
         driver.get("https://stellarburgers.education-services.ru/");
     }
 
@@ -47,6 +48,7 @@ public class Base {
 
     @Step("Ожидание URL")
     public void waitForUrlContains(String part) {
+
         wait.until(ExpectedConditions.urlContains(part));
     }
 
@@ -57,11 +59,15 @@ public class Base {
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException ignored) {
-        }
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
+    }
+
+    @Step("Ожидание исчезновения модального оверлея")
+    public void waitForOverlayToDisappear(WebDriver driver) {
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.invisibilityOfElementLocated(
+                        By.className("Modal_modal_overlay__x2ZCr")));
     }
 
 }

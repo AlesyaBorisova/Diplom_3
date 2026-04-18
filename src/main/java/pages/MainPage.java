@@ -28,30 +28,34 @@ public class MainPage extends Base {
 
     @Step("Нажать на кнопку 'Личный кабинет'")
     public void clickPersonalAccountButton() {
+
         click(personalAccountButton);
     }
 
 
     @Step("Нажимаем на кнопку 'Войти в аккаунт'")
     public void clickLoginButton() {
+
         click(loginButton);
     }
 
 
     @Step("Открыть 'Соусы'")
     public void navigateToSauces() {
+        waitForOverlayToDisappear(driver);
         safeClick(saucesTab);
 
     }
 
     @Step("Открыть 'Начинки'")
     public void navigateToFillings() {
+        waitForOverlayToDisappear(driver);
         safeClick(fillingsTab);
     }
 
     @Step("Открыть 'Булки'")
     public void navigateToBuns() {
-        safeClick(bunsTab);
+         click(bunsTab);
     }
 
 

@@ -12,6 +12,8 @@ import java.time.Duration;
 
 public class Base {
 
+    private final By modalOverlay = By.className("Modal_modal_overlay__x2ZCr"); // Модальный оверлей
+
     public final WebDriver driver;
     private final WebDriverWait wait;
 
@@ -66,8 +68,7 @@ public class Base {
     @Step("Ожидание исчезновения модального оверлея")
     public void waitForOverlayToDisappear(WebDriver driver) {
         new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.invisibilityOfElementLocated(
-                        By.className("Modal_modal_overlay__x2ZCr")));
+                .until(ExpectedConditions.invisibilityOfElementLocated(modalOverlay));
     }
 
 }
